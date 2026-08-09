@@ -8,7 +8,7 @@ A Flutter app for keeping track of birthdays and planning thoughtful gifts for t
 * 🔔 Receive reminders before upcoming birthdays
 * 🎁 Store gift ideas and information about each person
 * 💭 Answer questions about a person to help generate gift suggestions
-* 💾 Store data locally for convenient offline use
+* 💾 Store personal data locally using Hive
 * 📱 Cross-platform Flutter application
 
 ## Tech Stack
@@ -16,7 +16,8 @@ A Flutter app for keeping track of birthdays and planning thoughtful gifts for t
 * **Flutter & Dart** — application development
 * **Hive** — local data storage
 * **flutter_local_notifications** — birthday reminders
-* **Timezone** — scheduling notifications accurately
+* **Timezone** — accurate notification scheduling
+* **Groq API** — AI-powered gift suggestions
 
 ## Project Structure
 
@@ -24,7 +25,7 @@ A Flutter app for keeping track of birthdays and planning thoughtful gifts for t
 lib/
 ├── models/       # Data models
 ├── screens/      # Application screens
-├── services/     # Notifications and other services
+├── services/     # Notifications, storage and AI services
 └── ...
 ```
 
@@ -51,7 +52,25 @@ Install dependencies:
 flutter pub get
 ```
 
-Run the application:
+### API Configuration
+
+GiftKeeper uses the Groq API to generate gift suggestions.
+
+Create the following file:
+
+```text
+lib/constants/api_keys.dart
+```
+
+and add your API key:
+
+```dart
+const String groqApiKey = "YOUR_API_KEY";
+```
+
+> **Note:** API keys are excluded from version control and should never be committed to the repository.
+
+### Run the Application
 
 ```bash
 flutter run
@@ -59,7 +78,7 @@ flutter run
 
 ## What I Learned
 
-This project was built to develop practical experience with Flutter and mobile application development. It involved working with local data persistence, notification scheduling, state management, UI design, and organising a multi-screen application.
+This project was built to develop practical experience with Flutter and mobile application development. It involved working with local data persistence, notification scheduling, asynchronous operations, UI design, API integration, and organising a multi-screen application.
 
 ## Future Improvements
 
@@ -67,4 +86,3 @@ This project was built to develop practical experience with Flutter and mobile a
 * Improved notification customisation
 * Additional filtering and search functionality
 * Cloud backup and synchronisation
-
