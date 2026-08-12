@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import '../constants/api_keys.dart';
 import '../models/person.dart';
 
 
@@ -12,7 +10,7 @@ class AIService {
     final prompt = """
     You are an expert gift recommendation assistant.
 
-    Your goal is to recommend gifts that feel personal and thoughtful.
+    Your goal is to recommend gifts that feel personal and thoughtful and practical.
 
     Person Information
 
@@ -44,23 +42,14 @@ class AIService {
     """;
 
     final response = await http.post(
-      Uri.parse("https://api.groq.com/openai/v1/chat/completions"),
-        headers: {
-        "Authorization": "Bearer $groqApiKey",
+      Uri.parse("http://127.0.0.1:8000/generate-gifts"),
+      headers: {
         "Content-Type": "application/json",
-        },
-        body: jsonEncode({
-        "model": "llama-3.1-8b-instant",
-        "messages": [
-            {
-            "role": "user",
-            "content": prompt,
-            }
-        ]
+      },
+      body: jsonEncode({
+        "prompt": prompt,
       }),
     );
-    debugPrint(response.body);
-    debugPrint(response.statusCode.toString()); 
 
     if (response.statusCode != 200) {
       throw Exception(
@@ -70,7 +59,7 @@ class AIService {
 
     final json = jsonDecode(response.body);
 
-    final text = json["choices"][0]["message"]["content"] as String;
+    final text = json["ideas"] as String;
 
     return text
         .split("\n")
