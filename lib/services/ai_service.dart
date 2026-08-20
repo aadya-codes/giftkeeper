@@ -59,6 +59,8 @@ class AIService {
 
     final json = jsonDecode(response.body);
 
+    print("BACKEND RESPONSE: ${response.body}");
+
     final text = json["ideas"] as String;
 
     return text
