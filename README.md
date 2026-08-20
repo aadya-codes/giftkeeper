@@ -15,15 +15,15 @@ A Flutter application for keeping track of birthdays and planning thoughtful gif
 
 ### GiftKeeper
 
-![GiftKeeper home screen](screenshots/home.png)
+![GiftKeeper home screen](home.jpg)
 
 ### AI Gift Suggestions
 
-![AI gift suggestions](screenshots/ai-suggestions.png)
+![AI gift suggestions](ai-suggestions.jpg)
 
 ### Backend API
 
-![FastAPI backend](screenshots/backend.png)
+![FastAPI backend](backend.jpg)
 
 ## Tech Stack
 
